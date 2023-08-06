@@ -81,5 +81,5 @@ bootApp();
 
 /* ACTIVATE THE SERVER PORT */
 // Set up express application to use port 5000 as the access point for the server application.
-const PORT = 5001;  // Server application access point port number
+const PORT = process.env.PORT || 5001;  // Server application access point port number (use the specified port or default to 5001)
 app.listen(PORT, console.log(`Server started on ${PORT}`));
