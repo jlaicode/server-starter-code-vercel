@@ -8,11 +8,17 @@ const express = require('express');
 // Create an Express router function called "router"
 const router = express.Router();
 
+// Home page used to test Express application hosting.
+const homeRouter = require("./home");
+router.use("/home", homeRouter); // URL paths: "/home/"
+
 // Sub-Routers ("students" and "campuses")
 const studentsRouter = require('./students');  // Import "students" sub-router functions
 const campusesRouter = require('./campuses');  // Import "campuses" sub-router functions
 
 // Set up sub-route's top-level route and attach all sub-routes to it
+// Add top-level URL path "/home" before sub-routes
+router.use('/home', homeRouter);  // URL path: "/home/"
 // Add top-level URL path "/students" before sub-routes
 router.use('/students', studentsRouter);  // URL paths: "/students/" and "/students/:id"
 // Add top-level URL path "/campuses" before sub-routes
